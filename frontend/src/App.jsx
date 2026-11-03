@@ -1,12 +1,28 @@
 import React from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { Layout } from './components/layout/Layout'
+import { Dashboard } from './pages/Dashboard'
+import { TransactionAnalyzer } from './pages/TransactionAnalyzer'
+import { Transactions } from './pages/Transactions'
+import { FraudAlerts } from './pages/FraudAlerts'
+import { Analytics } from './pages/Analytics'
+import { ModelPerformance } from './pages/ModelPerformance'
+import { Settings } from './pages/Settings'
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-[#090D14] text-[#F1F5F9] p-8">
-      <div className="max-w-4xl mx-auto border border-[#253246] rounded-xl p-6 bg-[#121B29]">
-        <h1 className="text-2xl font-bold text-[#3B82F6] mb-2">FRAUD INTELLIGENCE PLATFORM</h1>
-        <p className="text-[#94A3B8]">AI-Powered Financial Fraud Detection System — Scaffolding Verified</p>
-      </div>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Dashboard />} />
+          <Route path="analyzer" element={<TransactionAnalyzer />} />
+          <Route path="transactions" element={<Transactions />} />
+          <Route path="alerts" element={<FraudAlerts />} />
+          <Route path="analytics" element={<Analytics />} />
+          <Route path="model" element={<ModelPerformance />} />
+          <Route path="settings" element={<Settings />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   )
 }

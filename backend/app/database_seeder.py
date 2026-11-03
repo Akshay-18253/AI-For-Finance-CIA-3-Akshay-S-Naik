@@ -195,3 +195,4 @@ def seed_database(num_transactions: int = 180, clear_existing: bool = True) -> i
 
 if __name__ == "__main__":
     seed_database(180)
+
