@@ -15,6 +15,19 @@ Developed as a Continuous Internal Assessment (CIA) project for **Semester 3: Ar
 
 ---
 
+## Documentation Suite
+
+For comprehensive deep dives, refer to the dedicated documentation files in the [`docs/`](docs/) directory:
+
+- 📐 [**System Architecture & Data Flow**](docs/ARCHITECTURE.md) — Multi-tier decoupled architecture, component interactions, sequence diagrams, and schema definitions.
+- 📡 [**Exhaustive REST API Documentation**](docs/API_DOCUMENTATION.md) — Complete endpoint reference with request/response schemas, query filters, and cURL examples.
+- 📊 [**Dataset Documentation & Methodology**](docs/DATASET_DOCUMENTATION.md) — Statistical distributions, class imbalance modeling, and financial fraud typologies.
+- 🧠 [**Machine Learning Model Training Guide**](docs/MODEL_TRAINING.md) — Anti-leakage preprocessing, Random Forest training, Isolation Forest anomaly scoring, and empirical holdout evaluation.
+- ⚙️ [**Step-by-Step Local Setup Guide**](docs/SETUP_GUIDE.md) — Installation, environment configuration, database seeding, and troubleshooting for Windows, macOS, and Linux.
+- 🎓 [**Academic Assessment Report**](docs/ACADEMIC_REPORT.md) — Theoretical background, loss matrix formulations, ethical considerations, and CIA submission summary.
+
+---
+
 ## 1. Project Overview & Problem Statement
 
 Financial fraud poses a multi-billion dollar challenge to online payment networks, digital banks, and institutional clearing systems. Legacy rule-based engines (e.g. static if-else checks) struggle to recognize emerging attack vectors, suffer from high false-positive rates, and fail to adapt to evolving adversary behaviors.
@@ -320,3 +333,4 @@ All 9 test suites will execute and verify health check, prediction endpoints, da
 ## 12. License
 
 This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
+
