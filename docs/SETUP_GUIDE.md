@@ -160,3 +160,4 @@ Build files will be created in `frontend/dist/`.
 | `ps1 cannot be loaded because running scripts is disabled` | Windows PowerShell execution policy | Run: `Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass` |
 | `CORS Error` in browser | Backend is rejecting frontend origin | Check `CORS_ORIGINS` in `backend/.env` includes `http://localhost:5173` |
 | `Model file not found` | Training script was not executed | Run `python -m app.ml.training` from the `backend/` directory |
+

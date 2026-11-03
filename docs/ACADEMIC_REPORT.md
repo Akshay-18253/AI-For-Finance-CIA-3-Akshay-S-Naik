@@ -82,3 +82,4 @@ Analysis of Mean Decrease in Impurity (MDI) revealed that the single most influe
 ## 5. Academic Conclusion
 
 This project demonstrates that combining domain-specific feature engineering, balanced cost-sensitive ensemble trees, and modern web application architecture yields a functional, institutional-grade fraud detection platform. The system satisfies all requirements of the Continuous Internal Assessment (CIA) for Semester 3: Artificial Intelligence for Finance.
+

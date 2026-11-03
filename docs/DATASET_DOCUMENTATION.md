@@ -90,3 +90,4 @@ To ensure the machine-learning model learns non-trivial multi-dimensional decisi
 2. **Balanced Subsample Cost Weighting**: The Random Forest classifier utilizes `class_weight='balanced'`, which automatically penalizes misclassifications of the rare fraud class inversely proportional to class frequencies:
    $$W_c = \frac{N}{2 \times N_c}$$
    Where $N$ is total training samples and $N_c$ is the count of class $c$.
+

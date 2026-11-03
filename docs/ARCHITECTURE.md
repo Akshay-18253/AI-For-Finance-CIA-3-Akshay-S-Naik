@@ -193,3 +193,4 @@ The client application is built with React 19 and Vite 8, utilizing Tailwind CSS
 - **Client-Side Routing**: Handled seamlessly by `react-router-dom` v7 with nested layout structures.
 - **Data Visualizations**: Responsive vector rendering via Recharts (SVG) with debounced resize handlers and custom dark-theme tooltips.
 - **API Client**: Centralized Axios singleton with baseURL dynamic discovery, 10-second timeout guards, and structured JSON parsing.
+
