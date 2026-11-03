@@ -1,0 +1,43 @@
+{
+  "model_name": "RandomForestClassifier",
+  "model_version": "1.0.0",
+  "dataset_name": "transactions_dataset.csv",
+  "num_samples": 30000,
+  "accuracy": 0.9992,
+  "precision": 0.9869,
+  "recall": 0.9805,
+  "f1_score": 0.9837,
+  "roc_auc": 0.9999,
+  "confusion_matrix": [
+    5844,
+    2,
+    3,
+    151
+  ],
+  "feature_importances": {
+    "amount_to_prev_ratio": 0.2581,
+    "transaction_amount": 0.2003,
+    "amount_log": 0.1739,
+    "new_device": 0.1046,
+    "recent_transaction_count": 0.0931,
+    "risk_flag_sum": 0.0637,
+    "location_distance": 0.0486,
+    "previous_transaction_amount": 0.0097,
+    "international_transaction": 0.0089,
+    "transaction_hour": 0.0081,
+    "account_age_days": 0.0078,
+    "is_night": 0.0054,
+    "merchant_category_Online Services": 0.0033,
+    "merchant_category_Travel": 0.0032,
+    "transaction_type_Payment": 0.003,
+    "transaction_type_Transfer": 0.0029,
+    "merchant_category_Electronics": 0.0024,
+    "merchant_category_Grocery": 0.0011,
+    "merchant_category_Retail": 0.001,
+    "transaction_type_Deposit": 0.0004,
+    "merchant_category_Entertainment": 0.0003,
+    "transaction_type_Withdrawal": 0.0003,
+    "merchant_category_Other": 0.0
+  },
+  "evaluation_timestamp": "2026-11-03T08:19:01.305111+00:00"
+}
