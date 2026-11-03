@@ -581,3 +581,4 @@ export const TransactionAnalyzer = () => {
     </div>
   )
 }
+

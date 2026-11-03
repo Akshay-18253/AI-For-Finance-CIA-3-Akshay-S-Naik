@@ -66,3 +66,4 @@ export const StatCard = ({
     </div>
   )
 }
+
