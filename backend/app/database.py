@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, text
 from sqlalchemy.orm import DeclarativeBase, sessionmaker
 
 from app.config import settings
@@ -46,3 +46,27 @@ def get_db():
 def init_db() -> None:
     """Create all tables defined by ORM models."""
     Base.metadata.create_all(bind=engine)
+    if not is_sqlite:
+        try:
+            with engine.connect() as conn:
+                conn.execute(text("ALTER TABLE public.transactions ENABLE ROW LEVEL SECURITY;"))
+                conn.execute(text("ALTER TABLE public.model_evaluations ENABLE ROW LEVEL SECURITY;"))
+                conn.execute(text("""
+                    DO $$
+                    BEGIN
+                        IF NOT EXISTS (
+                            SELECT 1 FROM pg_policies WHERE tablename = 'transactions' AND policyname = 'Allow full access to postgres'
+                        ) THEN
+                            CREATE POLICY "Allow full access to postgres" ON public.transactions FOR ALL USING (true) WITH CHECK (true);
+                        END IF;
+                        IF NOT EXISTS (
+                            SELECT 1 FROM pg_policies WHERE tablename = 'model_evaluations' AND policyname = 'Allow full access to postgres'
+                        ) THEN
+                            CREATE POLICY "Allow full access to postgres" ON public.model_evaluations FOR ALL USING (true) WITH CHECK (true);
+                        END IF;
+                    END $$;
+                """))
+                conn.commit()
+        except Exception:
+            pass  # Suppress errors if already configured or permissions vary
+
