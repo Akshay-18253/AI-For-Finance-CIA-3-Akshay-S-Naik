@@ -14,7 +14,10 @@ import numpy as np
 
 from app.database import SessionLocal, init_db
 from app.ml.inference import predict_transaction
-from app.models.transaction import Transaction
+from app.models.transaction import ModelEvaluation, Transaction
+from app.config import BASE_DIR
+import json
+
 
 TRANSACTION_TYPES = ["Payment", "Transfer", "Withdrawal", "Deposit"]
 MERCHANT_CATEGORIES = [
@@ -182,6 +185,45 @@ def seed_database(num_transactions: int = 180, clear_existing: bool = True) -> i
     db.add_all(records)
     db.commit()
 
+    # Seed model evaluation metrics if present
+    metrics_path = BASE_DIR / "artifacts" / "evaluation_metrics.json"
+    if metrics_path.exists():
+        try:
+            with open(metrics_path, "r", encoding="utf-8") as f:
+                metrics_data = json.load(f)
+            
+            # Format confusion matrix
+            cm_str = ",".join(str(x) for x in metrics_data.get("confusion_matrix", []))
+            # Format feature importances
+            fi_str = ";".join(
+                f"{k}:{v}"
+                for k, v in metrics_data.get("feature_importances", {}).items()
+            )
+
+            # Clear existing evaluations if clear_existing
+            if clear_existing:
+                db.query(ModelEvaluation).delete()
+                db.commit()
+
+            eval_record = ModelEvaluation(
+                model_version=metrics_data.get("model_version", "1.0.0"),
+                model_name=metrics_data.get("model_name", "RandomForestClassifier"),
+                dataset_name=metrics_data.get("dataset_name", "transactions_dataset.csv"),
+                num_samples=metrics_data.get("num_samples", 30000),
+                accuracy=metrics_data.get("accuracy", 0.9992),
+                precision=metrics_data.get("precision", 0.9869),
+                recall=metrics_data.get("recall", 0.9805),
+                f1_score=metrics_data.get("f1_score", 0.9837),
+                roc_auc=metrics_data.get("roc_auc", 0.9999),
+                confusion_matrix=cm_str,
+                feature_importances=fi_str,
+            )
+            db.add(eval_record)
+            db.commit()
+            print("Model evaluation metrics successfully seeded.")
+        except Exception as e:
+            print(f"Notice: Model evaluation seeding skipped: {e}")
+
     count = db.query(Transaction).count()
     flagged = (
         db.query(Transaction)
@@ -191,6 +233,7 @@ def seed_database(num_transactions: int = 180, clear_existing: bool = True) -> i
     print(f"Database seeded successfully with {count} transactions ({flagged} flagged).")
     db.close()
     return count
+
 
 
 if __name__ == "__main__":

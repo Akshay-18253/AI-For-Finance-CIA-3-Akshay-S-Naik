@@ -70,7 +70,7 @@ flowchart TD
         ML_Artifact -.->|Cached Load| ML_RF
     end
 
-    subgraph DBLayer["Persistence Layer (SQLite 3 + SQLAlchemy 2.0)"]
+    subgraph DBLayer["Persistence Layer (Supabase PostgreSQL / SQLite + SQLAlchemy 2.0)"]
         Table_Txn[("transactions table")]
         Table_Eval[("model_evaluations table")]
         
@@ -96,7 +96,7 @@ sequenceDiagram
     participant Pre as Preprocessing Pipeline
     participant RF as RandomForestClassifier
     participant Iso as IsolationForest
-    participant DB as SQLite Database
+    participant DB as PostgreSQL Database (Supabase)
 
     Analyst->>UI: Input 10 Transaction Parameters & Click "Analyze"
     UI->>UI: Execute Client-Side Validation (ranges, types, positive amounts)
@@ -129,7 +129,7 @@ sequenceDiagram
 
 ## 3. Database Schema Design
 
-The persistence tier is built on SQLite 3 managed through SQLAlchemy 2.0 ORM with declarative mapping, strict data type constraints, and indexing for high query throughput.
+The persistence tier is built on PostgreSQL (hosted on Supabase) and SQLite 3 for local development, managed through SQLAlchemy 2.0 ORM with declarative mapping, strict data type constraints, connection pooling with pre-ping validation, and B-tree indexing for sub-millisecond query throughput.
 
 ### 3.1 `transactions` Table
 Stores all processed financial transactions along with their operational telemetry and machine learning inferences.

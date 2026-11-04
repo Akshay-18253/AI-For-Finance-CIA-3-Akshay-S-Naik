@@ -66,7 +66,10 @@ Contents of `.env`:
 ```ini
 BACKEND_HOST=0.0.0.0
 BACKEND_PORT=8000
-DATABASE_URL=sqlite:///./fraud_detection.db
+# Cloud PostgreSQL (Supabase):
+DATABASE_URL=postgresql://postgres.[PROJECT_REF]:[PASSWORD]@aws-0-ap-northeast-1.pooler.supabase.com:5432/postgres
+# Or local SQLite fallback:
+# DATABASE_URL=sqlite:///./fraud_detection.db
 MODEL_PATH=artifacts/fraud_model.joblib
 CORS_ORIGINS=http://localhost:5173,http://127.0.0.1:5173
 ```
@@ -80,7 +83,7 @@ python dataset/generate_dataset.py
 # Train the Random Forest + Isolation Forest models:
 python -m app.ml.training
 
-# Populate SQLite database with 180 realistic demonstration transactions:
+# Populate database (Supabase PostgreSQL or local SQLite) with 180 realistic demonstration transactions:
 python -m app.database_seeder
 ```
 

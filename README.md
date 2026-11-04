@@ -57,7 +57,7 @@ This platform bridges that gap by deploying a hybrid supervised and unsupervised
 | **Frontend UI** | React 19, Vite 8, JavaScript (ESM), Tailwind CSS v4 (`@tailwindcss/vite`), Framer Motion, Recharts, Lucide React, Axios |
 | **Backend API** | Python 3.14+, FastAPI, Uvicorn (ASGI), Pydantic v2, Pydantic-Settings |
 | **Machine Learning** | Scikit-learn (RandomForestClassifier, IsolationForest), Pandas, NumPy, Scipy, Joblib |
-| **Database & ORM** | SQLite 3, SQLAlchemy 2.0 ORM |
+| **Database & ORM** | Supabase Cloud PostgreSQL (production/cloud) & SQLite 3 (local development), SQLAlchemy 2.0 ORM, Psycopg2 |
 | **Testing** | Pytest, FastAPI TestClient, Requests/HTTPX |
 | **Design System** | Dark Institutional Fintech (`#090D14` base, `#121B29` cards, `#3B82F6` electric blue, `#22D3EE` cyan) |
 
@@ -82,7 +82,7 @@ This platform bridges that gap by deploying a hybrid supervised and unsupervised
                ▼                                           ▼
 ┌───────────────────────────────┐         ┌───────────────────────────────┐
 │       MACHINE LEARNING        │         │      DATABASE / PERSISTENCE   │
-│  - Preprocessor (Scaler + OHE)│         │  SQLite 3 (fraud_detection.db)│
+│  - Preprocessor (Scaler + OHE)│         │  Supabase Cloud PostgreSQL   │
 │  - RandomForestClassifier     │         │  - transactions table         │
 │  - IsolationForest            │         │  - model_evaluations table    │
 │  - Joblib Model Artifacts     │         └───────────────────────────────┘
