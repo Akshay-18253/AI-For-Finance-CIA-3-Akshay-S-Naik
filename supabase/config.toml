@@ -1,0 +1,21 @@
+# Supabase Configuration for Fraud Intelligence Platform
+# Project: vplpaculiexdlkxjceuy
+
+project_id = "vplpaculiexdlkxjceuy"
+
+[api]
+port = 54321
+schemas = ["public"]
+
+[db]
+port = 54322
+shadow_port = 54320
+major_version = 15
+
+[studio]
+port = 54323
+
+[auth]
+site_url = "http://localhost:5173"
+additional_redirect_urls = ["http://localhost:8000"]
+jwt_expiry = 3600

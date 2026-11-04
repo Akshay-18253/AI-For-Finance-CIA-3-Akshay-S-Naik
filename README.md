@@ -24,6 +24,7 @@ For comprehensive deep dives, refer to the dedicated documentation files in the 
 - 📊 [**Dataset Documentation & Methodology**](docs/DATASET_DOCUMENTATION.md) — Statistical distributions, class imbalance modeling, and financial fraud typologies.
 - 🧠 [**Machine Learning Model Training Guide**](docs/MODEL_TRAINING.md) — Anti-leakage preprocessing, Random Forest training, Isolation Forest anomaly scoring, and empirical holdout evaluation.
 - ⚙️ [**Step-by-Step Local Setup Guide**](docs/SETUP_GUIDE.md) — Installation, environment configuration, database seeding, and troubleshooting for Windows, macOS, and Linux.
+- 🔌 [**Supabase Cloud Integration Guide**](docs/SUPABASE_INTEGRATION.md) — Cloud database pooling, Supabase GitHub integration, RLS security policies, and migration schemas.
 - 🎓 [**Academic Assessment Report**](docs/ACADEMIC_REPORT.md) — Theoretical background, loss matrix formulations, ethical considerations, and CIA submission summary.
 
 ---
